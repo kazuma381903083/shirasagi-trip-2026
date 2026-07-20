@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#15263D">
 <meta name="description" content="道後温泉・高松・姫路をめぐる父子二人旅のデジタル旅券">
-<title>白鷺旅｜父子二人旅デジタルパスポート v13</title>
-<link rel="manifest" href="./manifest.webmanifest">
-<link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
-<link rel="apple-touch-icon" href="./icon-192.png">
+<title>白鷺旅｜父子二人旅デジタルパスポート v14</title>
+<link rel="manifest" href="./manifest-v14.webmanifest">
+<link rel="icon" type="image/png" sizes="192x192" href="./icon-192-v14.png">
+<link rel="apple-touch-icon" href="./icon-192-v14.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -954,18 +954,217 @@
     *,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
   }
 
+
+  /* ===== v14 City Chapters ===== */
+  :root{
+    --dogo:#C85F45;
+    --matsuyama:#466681;
+    --takamatsu:#4E806B;
+    --himeji:#A27E32;
+    --quiet-border:#DDD6CA;
+    --quiet-paper:#FBF8F1;
+  }
+
+  /* Motion is reserved for the moment a new chapter enters the page. */
+  body *,body *::before,body *::after{animation:none;transition-duration:0s}
+  .rv{opacity:1;transform:none}
+
+  /* A single, restrained icon language. */
+  .ui-symbol{
+    display:inline-grid;place-items:center;flex:none;width:28px;height:28px;border:1px solid currentColor;
+    border-radius:50%;font-family:var(--disp);font-size:11px;font-weight:800;line-height:1;letter-spacing:0;
+  }
+  .iconbtn .ui-symbol{width:26px;height:26px;border:0;font-size:12px}
+  .toolcard h4{display:flex;align-items:center;gap:9px}
+  .toolcard h4 .ui-symbol{color:var(--navy-soft)}
+  .train-marker{top:2px;width:30px;height:30px;display:grid;place-items:center;border:2px solid #FFFDF8;border-radius:50%;background:var(--navy);color:#fff;font:800 10px var(--disp);filter:none}
+
+  /* Less chrome: type, rhythm, and city color do the work. */
+  .shead .num{display:none}
+  .shead .eb{font-size:9px;color:var(--ink2);letter-spacing:.2em}
+  .shead .eb::before{width:22px;height:1px;background:var(--ink2)}
+  .shead h2{font-size:clamp(29px,4vw,40px);line-height:1.38}
+  .fig,.tei,.shop,.dayblock,.dcard,.toolcard,.weather-card,.todo li{
+    border-radius:10px;border-color:var(--quiet-border);box-shadow:none;
+  }
+  .boarding-pass,.today-panel,.mobile-dock{box-shadow:0 12px 34px rgba(31,39,46,.1)}
+  .boarding-pass{border-radius:12px}
+  .pass-side{background:#F0EADF}
+  .ch{border-radius:5px;padding:3px 8px}
+  .st{border-radius:4px!important}
+  .archive-card{border-radius:10px;background:#F2EEE6}
+  .paper-tear,.playground-bar,.play-stamp{display:none!important}
+  .closing{margin-top:92px}
+  .closing::after{display:none}
+
+  /* The field map is now a primary chapter, not buried research. */
+  #passport{order:1}
+  #dash{order:2}
+  #task{order:3}
+  #journeyChapters{order:4}
+  #plan{order:5}
+  #map{order:6}
+  #archiveGate{order:7}
+  #gantt{order:8}
+  #route{order:9}
+  #teiban{order:10}
+  #meshi{order:11}
+  #tools{order:12}
+  #stamps{order:13}
+
+  /* Compact chapter index; the real covers live inside each day. */
+  .chapter-grid{gap:9px}
+  .chapter-card{min-height:152px;padding:16px;border-radius:9px;background:transparent}
+  .chapter-card::before{height:3px}
+  .chapter-card::after{font-size:72px;bottom:-20px}
+  .chapter-card h3{margin-top:22px;font-size:18px;line-height:1.45}
+  .chapter-card p{display:none}
+  .chapter-card:hover{transform:none;box-shadow:none;border-color:var(--chapter-color)}
+  .chapter-arrow{margin-top:8px;font-size:8px}
+
+  /* Every day opens with a cover. */
+  .dayblock{
+    --city-accent:var(--dogo);padding:24px;background:#FFFDF8;border-top:1px solid var(--quiet-border)!important;
+    overflow:hidden;
+  }
+  .dayblock[data-city="matsuyama"]{--city-accent:var(--matsuyama)}
+  .dayblock[data-city="takamatsu"]{--city-accent:var(--takamatsu)}
+  .dayblock[data-city="himeji"]{--city-accent:var(--himeji)}
+  .day-cover{
+    position:relative;display:flex;min-height:292px;align-items:flex-end;margin:-24px -24px 18px;overflow:hidden;
+    color:#fff;background-image:url('./hero-v14.jpg');background-size:cover;background-repeat:no-repeat;
+  }
+  .day-cover[data-city="dogo"]{background-position:8% center}
+  .day-cover[data-city="matsuyama"]{background-position:22% center}
+  .day-cover[data-city="takamatsu"]{background-position:58% center}
+  .day-cover[data-city="himeji"]{background-position:94% center}
+  .day-cover::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,16,27,.06),rgba(7,16,27,.86) 96%)}
+  .day-cover[data-city="dogo"]::before{background:linear-gradient(180deg,rgba(67,22,15,.05),rgba(62,24,18,.88) 96%)}
+  .day-cover[data-city="matsuyama"]::before{background:linear-gradient(180deg,rgba(12,31,48,.05),rgba(19,42,61,.89) 96%)}
+  .day-cover[data-city="takamatsu"]::before{background:linear-gradient(180deg,rgba(13,39,31,.04),rgba(20,54,43,.88) 96%)}
+  .day-cover[data-city="himeji"]::before{background:linear-gradient(180deg,rgba(35,30,18,.03),rgba(47,40,23,.86) 96%)}
+  .day-cover::after{
+    content:"";position:absolute;left:0;right:0;bottom:0;height:4px;background:var(--city-accent);
+    transform:scaleX(0);transform-origin:left center;
+  }
+  .dayblock.arrived .day-cover::after{animation:v14ArrivalLine .95s cubic-bezier(.2,.75,.2,1) forwards}
+  @keyframes v14ArrivalLine{to{transform:scaleX(1)}}
+  .day-cover-content{position:relative;z-index:1;width:100%;padding:28px}
+  .day-cover-kicker{font-size:9px;font-weight:900;letter-spacing:.22em;color:#EEE5D8}
+  .day-cover h3{margin-top:8px;font-family:var(--disp);font-size:clamp(28px,5vw,44px);line-height:1.3;letter-spacing:.035em}
+  .day-cover-lead{max-width:560px;margin-top:7px;font-size:12px;line-height:1.85;color:#EEEAE2}
+  .day-cover-facts{display:grid;grid-template-columns:repeat(3,minmax(110px,1fr));max-width:620px;margin-top:20px;border-top:1px solid rgba(255,255,255,.28)}
+  .day-cover-facts span{padding:12px 14px 0 0}
+  .day-cover-facts small{display:block;font-size:8px;font-weight:900;letter-spacing:.13em;color:#CBC6BE}
+  .day-cover-facts b{display:block;margin-top:3px;font-family:var(--disp);font-size:12px;color:#fff}
+  .dayblock .dh{position:relative;top:auto;margin:0 -24px 18px;padding:0 24px 16px;border-radius:0;background:transparent;border-bottom:1px solid var(--quiet-border)}
+  .dayblock .dh .dn{color:var(--city-accent)}
+  .dayblock .dh .stay{background:transparent;border:1px solid var(--quiet-border);color:var(--ink2)}
+  .day-toggle{border-color:var(--city-accent);color:var(--city-accent);background:transparent}
+  .day-mission{border:0;border-left:3px solid var(--city-accent);border-radius:0;background:#F4F0E8}
+  .day-mission small{color:var(--city-accent)}
+  .mission-toggle{border-color:var(--city-accent);color:var(--city-accent)}
+  .mission-toggle.done{background:var(--city-accent);border-color:var(--city-accent)}
+  .dayblock.is-current{border-color:var(--city-accent)!important;box-shadow:none}
+  .dayblock.is-current .dh::after{color:var(--city-accent)}
+
+  /* A practical, API-free city console. */
+  .field-map{
+    --map-accent:var(--dogo);overflow:hidden;border:1px solid var(--quiet-border);border-radius:12px;background:#FFFDF8;
+  }
+  .field-map[data-city="matsuyama"]{--map-accent:var(--matsuyama)}
+  .field-map[data-city="takamatsu"]{--map-accent:var(--takamatsu)}
+  .field-map[data-city="himeji"]{--map-accent:var(--himeji)}
+  .field-map-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px;border-bottom:1px solid var(--quiet-border);background:#F5F1E9}
+  .city-tabs{display:flex;gap:4px;flex-wrap:wrap}
+  .city-tabs button,.map-locate{border:1px solid transparent;border-radius:7px;background:transparent;color:var(--ink2);padding:8px 11px;font-size:10px;font-weight:900;cursor:pointer}
+  .city-tabs button[aria-selected="true"]{background:var(--map-accent);color:#fff}
+  .map-locate{display:flex;align-items:center;gap:7px;border-color:var(--quiet-border);background:#FFFDF8;color:var(--navy)}
+  .map-locate .ui-symbol{width:23px;height:23px;font-size:9px}
+  .field-map-head{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:28px;border-bottom:1px solid var(--quiet-border)}
+  .field-map-head small{font:900 8px/1.4 ui-monospace,monospace;letter-spacing:.15em;color:var(--map-accent)}
+  .field-map-head h3{margin-top:6px;font-family:var(--disp);font-size:25px;line-height:1.45}
+  .field-map-head p{align-self:end;color:var(--ink2);font-size:11.5px;line-height:1.9}
+  .field-route{position:relative;display:flex;align-items:flex-start;gap:0;padding:24px 28px;background:#F8F5EF;overflow-x:auto}
+  .field-route::before{content:"";position:absolute;left:49px;right:49px;top:35px;height:1px;background:#CBC3B7}
+  .field-route-stop{position:relative;z-index:1;flex:1;min-width:120px;text-align:center}
+  .field-route-stop i{display:grid;place-items:center;width:23px;height:23px;margin:0 auto;border:1px solid var(--map-accent);border-radius:50%;background:#FFFDF8;color:var(--map-accent);font:800 9px var(--disp);font-style:normal}
+  .field-route-stop b{display:block;margin-top:8px;font-family:var(--disp);font-size:11.5px}
+  .field-route-stop small{display:block;margin-top:2px;color:var(--ink2);font-size:8.5px}
+  .field-places{display:grid;grid-template-columns:1fr 1fr;gap:0;padding:0 28px}
+  .field-place{display:grid;grid-template-columns:auto 1fr;gap:12px;padding:20px 0;border-bottom:1px solid var(--quiet-border)}
+  .field-place:nth-child(odd){padding-right:22px;border-right:1px solid var(--quiet-border)}
+  .field-place:nth-child(even){padding-left:22px}
+  .place-symbol{display:grid;place-items:center;width:34px;height:34px;border:1px solid var(--map-accent);border-radius:50%;color:var(--map-accent);font-family:var(--disp);font-size:11px;font-weight:900}
+  .place-copy h4{font-family:var(--disp);font-size:14px;line-height:1.4}
+  .place-copy p{margin-top:4px;color:var(--ink2);font-size:10.5px;line-height:1.7}
+  .place-meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .place-meta span{padding:3px 6px;border-radius:4px;background:#F1ECE4;color:var(--ink2);font-size:8.5px;font-weight:800}
+  .place-meta .must{background:#F8E6E0;color:#97412E}
+  .place-distance{color:var(--map-accent)!important}
+  .place-actions{grid-column:2;display:flex;gap:7px;margin-top:8px}
+  .place-actions a{display:inline-flex;align-items:center;gap:5px;padding:7px 9px;border:1px solid var(--quiet-border);border-radius:6px;color:var(--navy);text-decoration:none;font-size:8.5px;font-weight:900}
+  .place-actions a.primary{border-color:var(--map-accent);background:var(--map-accent);color:#fff}
+  .place-actions .ui-symbol{width:19px;height:19px;font-size:7px}
+  .field-map-status{padding:12px 28px;color:var(--ink2);font-size:9.5px;background:#F5F1E9}
+  .concept-maps{margin-top:18px;border-top:1px solid var(--quiet-border)}
+  .concept-maps summary{padding:15px 2px;color:var(--ink2);font-size:10px;font-weight:900;cursor:pointer}
+  .concept-maps[open] summary{color:var(--navy)}
+  .concept-maps > .fig:first-of-type{margin-top:4px}
+
+  /* The signature heron remains; everything else stays quiet. */
+  .shirasagi-mascot{filter:none;opacity:.82}
+  .shirasagi-mascot .bird{border-color:var(--quiet-border);color:var(--navy)}
+  .shirasagi-mascot .speech{border-width:1px;border-color:var(--quiet-border);box-shadow:0 8px 20px rgba(23,48,74,.08)}
+  .mobile-dock a .ui-symbol{width:23px;height:23px;font-size:9px}
+  .mobile-dock a span{font-size:9px}
+  .mobile-dock a.active .ui-symbol{border-color:rgba(255,255,255,.65)}
+
+  @media(max-width:800px){
+    .chapter-grid{grid-template-columns:1fr 1fr}
+    .day-cover{min-height:270px}
+    .day-cover-facts{grid-template-columns:repeat(3,1fr)}
+    .field-map-head{grid-template-columns:1fr;gap:8px;padding:22px}
+    .field-places{grid-template-columns:1fr;padding:0 20px}
+    .field-place:nth-child(n){padding:17px 0;border-right:0}
+  }
+
+  @media(max-width:520px){
+    .chapter-card{min-height:132px}
+    .dayblock{padding:18px}
+    .day-cover{min-height:290px;margin:-18px -18px 15px}
+    .day-cover-content{padding:22px 20px}
+    .day-cover h3{font-size:31px}
+    .day-cover-facts{gap:0}
+    .day-cover-facts span{padding-right:8px}
+    .day-cover-facts b{font-size:10.5px}
+    .dayblock .dh{margin:0 -18px 15px;padding:0 18px 14px}
+    .field-map-toolbar{align-items:stretch;flex-direction:column}
+    .city-tabs{display:grid;grid-template-columns:repeat(3,1fr)}
+    .city-tabs button{padding:8px 5px}
+    .map-locate{justify-content:center}
+    .field-route{padding-left:16px;padding-right:16px}
+    .field-route::before{left:37px;right:37px}
+    .field-route-stop{min-width:105px}
+    .field-map-status{padding:11px 20px}
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .dayblock.arrived .day-cover::after{animation:none;transform:scaleX(1)}
+  }
+
 </style>
 </head>
 <body>
 
 
-<header class="hero app-hero" id="top" style="--hero-image:url('./hero-v13.jpg')">
+<header class="hero app-hero" id="top" style="--hero-image:url('./hero-v14.jpg')">
   <div class="hero-media" aria-hidden="true"></div>
   <div class="hero-shade" aria-hidden="true"></div>
   <div class="hero-topbar">
     <a class="brand" href="#top" aria-label="ページ上部へ"><span class="brand-crane">白</span><span>白鷺旅</span></a>
     <div class="hero-actions">
-      <button class="iconbtn playful-locate" id="locateBtn" type="button" aria-label="現在地を確認">⌖</button>
+      <button class="iconbtn playful-locate" id="locateBtn" type="button" aria-label="現在地を確認"><span class="ui-symbol" aria-hidden="true">位</span></button>
     </div>
   </div>
   
@@ -993,21 +1192,10 @@
       <span class="journey-mode-label" id="journeyModeLabel">PREPARING FOR DEPARTURE</span>
     </div>
 
-    <div class="ticket-strip" aria-label="旅のテーマ">
-      <span><b>♨</b> 三湯</span>
-      <i></i>
-      <span><b>🚄</b> 瀬戸内</span>
-      <i></i>
-      <span><b>🍜</b> 讃岐</span>
-      <i></i>
-      <span><b>🏯</b> 二城</span>
-      <i></i>
-      <span><b>🍶</b> 地酒</span>
-    </div>
   </div>
   <div class="route-rail" aria-label="旅の進行ルート">
     <div class="route-track"><div class="route-progress" id="routeProgress"></div></div>
-    <div class="train-marker" id="trainMarker" aria-hidden="true">🚄</div>
+    <div class="train-marker" id="trainMarker" aria-hidden="true"><span>列</span></div>
     <div class="route-stops">
       <span data-progress="0">静岡</span><span data-progress=".24">岡山</span><span data-progress=".43">松山</span>
       <span data-progress=".65">高松</span><span data-progress=".83">姫路</span><span data-progress="1">静岡</span>
@@ -1032,7 +1220,7 @@
 
 <nav class="nav" aria-label="主要ナビゲーション"><div class="nav-in">
   <a href="#passport">旅券</a><a href="#dash">出発準備</a><a href="#plan">四日間</a>
-  <a href="#today">今日の旅</a><a href="#stamps">旅の記録</a>
+  <a href="#today">今日の旅</a><a href="#map">地図</a><a href="#stamps">旅の記録</a>
 </div></nav>
 
 <section class="today-panel" id="today" aria-live="polite">
@@ -1226,10 +1414,31 @@
   </div>
 </section>
 
-<!-- 03 道後マップ -->
-<div class="paper-tear" aria-hidden="true"></div><section class="sec deep-section" id="map">
-  <div class="shead rv"><span class="num">03</span><p class="eb">AREA MAP</p><h2>道後、ぜんぶ徒歩圏。</h2>
-    <p class="lead">駅から本館まで商店街経由で徒歩5分。宿も外湯も酒も、半径300mに収まっています。</p></div>
+<!-- 05 使える旅地図 -->
+<div class="paper-tear" aria-hidden="true"></div><section class="sec" id="map">
+  <div class="shead rv"><span class="num">05</span><p class="eb">FIELD MAP</p><h2>次の場所へ、迷わず。</h2>
+    <p class="lead">この旅で使う場所だけを表示。現在地からの距離を測り、そのまま徒歩ルートを開けます。</p></div>
+
+  <div class="field-map rv" id="fieldMap" data-city="dogo">
+    <div class="field-map-toolbar">
+      <div class="city-tabs" role="tablist" aria-label="都市を選択">
+        <button type="button" role="tab" aria-selected="true" data-map-city="dogo">道後・松山</button>
+        <button type="button" role="tab" aria-selected="false" data-map-city="takamatsu">高松</button>
+        <button type="button" role="tab" aria-selected="false" data-map-city="himeji">姫路</button>
+      </div>
+      <button class="map-locate" id="fieldMapLocate" type="button"><span class="ui-symbol" aria-hidden="true">位</span>現在地から測る</button>
+    </div>
+    <div class="field-map-head">
+      <div><small id="fieldMapEyebrow">DAY 1–2 / DOGŌ & MATSUYAMA</small><h3 id="fieldMapTitle">湯と城を、無理なく結ぶ。</h3></div>
+      <p id="fieldMapSummary">道後は徒歩圏、松山城へは乗り物を使う。暑い時間帯は屋内か宿へ戻ります。</p>
+    </div>
+    <div class="field-route" id="fieldRoute" aria-label="選択中の都市の旅ルート"></div>
+    <div class="field-places" id="fieldPlaces"></div>
+    <p class="field-map-status" id="fieldMapStatus" aria-live="polite">位置情報は「現在地から測る」を押したときだけ使用します。</p>
+  </div>
+
+  <details class="concept-maps">
+    <summary>詳細な概念図と距離の解説を見る</summary>
   <div class="fig rv"><div class="fcap">道後温泉 まち歩き概念図(縮尺・位置は模式)</div>
     <svg class="mapsvg" viewBox="0 0 720 470" role="img" aria-label="道後温泉エリアの概念図">
       <rect width="720" height="470" fill="#F7F5EE"/>
@@ -1455,6 +1664,7 @@
     <p class="fnote">図は縮尺を単純化しています。重要なのは、姫路の観光動線が「駅から北へ一直線」、宿だけが「駅の南側」という点。朝に荷物を駅ロッカーへ預ければ、城から戻った後にホテルへ引き返す必要がありません。</p>
   </div>
 
+  </details>
 </section>
 
 <!-- 04 定番徹底 -->
@@ -1624,7 +1834,19 @@
 <div class="paper-tear" aria-hidden="true"></div><section class="sec" id="plan">
   <div class="shead rv"><span class="num">04</span><p class="eb">THE FOUR-DAY STORY</p><h2>四日間の物語。</h2><div class="priority"><span class="must">絶対に守る</span><span class="flex">条件付き</span><span>体調で削る</span></div></div>
 
-  <div class="dayblock postcard rv" id="day-1">
+  <div class="dayblock postcard rv" id="day-1" data-city="dogo">
+    <div class="day-cover" data-city="dogo">
+      <div class="day-cover-content">
+        <p class="day-cover-kicker">第一章・道後</p>
+        <h3>三千年の湯へ。</h3>
+        <p class="day-cover-lead">列車で西へ。湯と会席、祭りの灯りから旅が始まる。</p>
+        <div class="day-cover-facts">
+          <span><small>歩調</small><b>移動中心</b></span>
+          <span><small>絶対時刻</small><b>08:07 静岡発</b></span>
+          <span><small>今日の核</small><b>湯と祭り</b></span>
+        </div>
+      </div>
+    </div>
     <div class="dh"><span class="dn">8/7 FRI</span><span class="dsub">車内宴 → 湯 → 宿会席 → 祭り初日</span><span class="stay">泊：大和屋本店(2食)</span></div>
     <ul class="tl">
       <li><span class="tm">8:07</span>ひかり701号で静岡発 → <span class="tm">11:06</span>岡山着。29分の乗換で駅弁・地酒・水を調達</li>
@@ -1638,7 +1860,19 @@
     <div class="decision"><b>運用ルール：</b> 酒・追加観光は固定予定ではなく体調で削る。宿の食事と翌朝の睡眠を優先。</div>
   </div>
 
-  <div class="dayblock postcard rv" id="day-2">
+  <div class="dayblock postcard rv" id="day-2" data-city="matsuyama">
+    <div class="day-cover" data-city="matsuyama">
+      <div class="day-cover-content">
+        <p class="day-cover-kicker">第二章・松山</p>
+        <h3>城下町と、三つの湯。</h3>
+        <p class="day-cover-lead">刻太鼓で始まる朝。城下を歩き、夕方に三湯を結ぶ。</p>
+        <div class="day-cover-facts">
+          <span><small>歩調</small><b>徒歩多め</b></span>
+          <span><small>絶対時刻</small><b>05:30 本館前</b></span>
+          <span><small>今日の核</small><b>一番風呂</b></span>
+        </div>
+      </div>
+    </div>
     <div class="dh"><span class="dn">8/8 SAT</span><span class="dsub">一番風呂 → 城 → 鯛めし → 三湯完走 → 祭りピーク</span><span class="stay">泊：ふなや(2食)</span></div>
     <ul class="tl">
       <li class="yu"><span class="tm">5:30</span>本館前に並ぶ<span class="nt">男性定員60名・混雑時は整理券。"最初の空気"を取るなら5:30着</span></li>
@@ -1657,7 +1891,19 @@
     <div class="decision"><b>選択制：</b> 石手寺と市街文化施設は両取りしない。疲労があれば石手寺を外し、ふなやで休憩。</div>
   </div>
 
-  <div class="dayblock postcard rv" id="day-3">
+  <div class="dayblock postcard rv" id="day-3" data-city="takamatsu">
+    <div class="day-cover" data-city="takamatsu">
+      <div class="day-cover-content">
+        <p class="day-cover-kicker">第三章・瀬戸内</p>
+        <h3>海を越え、庭へ。</h3>
+        <p class="day-cover-lead">讃岐の一杯と栗林の静けさ。夕方、白鷺城の城下へ。</p>
+        <div class="day-cover-facts">
+          <span><small>歩調</small><b>乗換あり</b></span>
+          <span><small>絶対時刻</small><b>17:30 退店</b></span>
+          <span><small>今日の核</small><b>庭と瀬戸内</b></span>
+        </div>
+      </div>
+    </div>
     <div class="dh"><span class="dn">8/9 SUN</span><span class="dsub">讃岐うどんと栗林、白鷺城の城下へ</span><span class="stay">泊：リブマックスPREMIUM姫路駅南</span></div>
     <ul class="tl">
       <li class="yu"><span class="tm">7:00</span>ふなやの檜湯/御影湯で朝湯 → <span class="tm">7:30</span>朝食 → <span class="tm">8:05</span>庭園散歩</li>
@@ -1673,7 +1919,19 @@
     <div class="decision"><b>絶対条件：</b> 栗林公園と18:10マリンライナーを守る。うどん二杯目は17:00入店できた場合のみ。</div>
   </div>
 
-  <div class="dayblock postcard rv" id="day-4">
+  <div class="dayblock postcard rv" id="day-4" data-city="himeji">
+    <div class="day-cover" data-city="himeji">
+      <div class="day-cover-content">
+        <p class="day-cover-kicker">第四章・姫路</p>
+        <h3>白鷺城に帰結する。</h3>
+        <p class="day-cover-lead">大天守をゆっくり歩き、父子旅の景色を見納める。</p>
+        <div class="day-cover-facts">
+          <span><small>歩調</small><b>階段あり</b></span>
+          <span><small>絶対時刻</small><b>14:40 ホーム</b></span>
+          <span><small>今日の核</small><b>白鷺城</b></span>
+        </div>
+      </div>
+    </div>
     <div class="dh"><span class="dn">8/10 MON</span><span class="dsub">ゆっくり朝支度 → 白鷺城 → 帰路</span><span class="stay">帰宅</span></div>
     <ul class="tl">
       <li class="yu"><span class="tm">7:25</span>体調が良ければ14階「神代の湯」で朝湯（〜7:50）<span class="nt">眠気・脱水・酒残りがあれば中止。サウナは無理に入らない</span></li>
@@ -1730,7 +1988,7 @@
       <p class="fnote">出発日が予報範囲外の間は現在の天気を表示し、予報が取得可能になったら8/7〜10の旅行日予報へ自動で切り替えます。</p>
     </div>
     <div class="toolcard">
-      <h4>📍 現在地から次の目的地</h4>
+      <h4><span class="ui-symbol" aria-hidden="true">位</span>現在地から次の目的地</h4>
       <select class="toolinput" id="destinationSelect">
         <option value="33.8519,132.7864">道後温泉本館</option>
         <option value="33.8456,132.7657">松山城</option>
@@ -1745,7 +2003,7 @@
 
   <div class="toolgrid rv" style="margin-top:14px">
     <div class="toolcard">
-      <h4>✅ 持ち物チェックリスト</h4>
+      <h4><span class="ui-symbol" aria-hidden="true">持</span>持ち物チェックリスト</h4>
       <div class="checklist" id="checklist"></div>
       <div style="display:flex;gap:8px;margin-top:10px">
         <input class="toolinput" id="newCheckItem" placeholder="項目を追加">
@@ -1753,18 +2011,18 @@
       </div>
     </div>
     <div class="toolcard">
-      <h4>📷 父子旅アルバム</h4>
+      <h4><span class="ui-symbol" aria-hidden="true">写</span>父子旅アルバム</h4>
       <p style="font-size:11.5px;color:var(--ink2)">写真はこのブラウザ内だけに縮小保存され、GitHubには送信されません。</p>
       <input class="toolinput" type="file" id="photoInput" accept="image/*" multiple style="margin-top:10px">
       <div class="album-grid" id="albumGrid"></div>
     </div>
     <div class="toolcard">
-      <h4>📝 旅メモ</h4>
+      <h4><span class="ui-symbol" aria-hidden="true">記</span>旅メモ</h4>
       <textarea class="toolinput" id="tripMemo" rows="8" placeholder="集合場所、買う土産、父との会話メモなど"></textarea>
       <small style="color:var(--ink2)">入力内容は自動保存されます。</small>
     </div>
     <div class="toolcard">
-      <h4>🧭 このページの使い方</h4>
+      <h4><span class="ui-symbol" aria-hidden="true">案</span>このページの使い方</h4>
       <p style="font-size:12px;color:var(--ink2);line-height:1.9">スクロールすると上部の列車が進みます。旅行当日は「今日の旅」が自動選択され、NOW・NEXT・DEADLINEを先に表示します。</p>
       <button class="toolbtn" id="resetLocal" type="button" style="margin-top:12px;background:var(--shu)">端末内データを初期化</button>
     </div>
@@ -1799,16 +2057,14 @@
 <div class="wrap" style="padding-top:34px"><div class="play-stamp">父子旅<br>2026</div></div>
 <footer><div class="wrap"><div class="hr"></div>
   <p>本資料の料金・時刻・営業情報・評価値は2026年7月19日時点の再検討内容を反映した目安です。列車時刻は発売前に、店舗の営業日・時間は訪問前に必ず公式情報をご確認ください。Google評価は変動します。</p>
-  <p style="margin-top:6px;">白鷺旅 父子二人旅デジタルパスポート v13｜2026.8.7–10・静岡発 3泊4日</p>
+  <p style="margin-top:6px;">白鷺旅 父子二人旅デジタルパスポート v14｜2026.8.7–10・静岡発 3泊4日</p>
 </div></footer>
 
-<div class="scroll-place-indicator"><span class="route-live-pin">📍</span><div><small>ページ上の現在地</small><br><b id="scrollPlace">道後・旅の概要</b></div></div>
-
 <nav class="mobile-dock" aria-label="モバイルナビゲーション">
-  <a href="#today" data-dock="today"><span aria-hidden="true">◉</span>今日</a>
-  <a href="#plan" data-dock="plan"><span aria-hidden="true">四</span>旅程</a>
-  <a href="#map" data-dock="map" data-requires-archive><span aria-hidden="true">◇</span>地図</a>
-  <a href="#stamps" data-dock="stamps"><span aria-hidden="true">印</span>旅券</a>
+  <a href="#today" data-dock="today"><span class="ui-symbol" aria-hidden="true">今</span>今日</a>
+  <a href="#plan" data-dock="plan"><span class="ui-symbol" aria-hidden="true">旅</span>旅程</a>
+  <a href="#map" data-dock="map"><span class="ui-symbol" aria-hidden="true">図</span>地図</a>
+  <a href="#stamps" data-dock="stamps"><span class="ui-symbol" aria-hidden="true">印</span>旅券</a>
 </nav>
 
 <script>
@@ -2002,6 +2258,10 @@
     const target=document.querySelector(card.getAttribute('href'));
     if(target) setDayOpen(target,true);
   }));
+  const arrivalObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(entry.isIntersecting){entry.target.classList.add('arrived');arrivalObserver.unobserve(entry.target);}
+  }),{threshold:.28});
+  dayBlocks.forEach(block=>arrivalObserver.observe(block));
 
   // Research remains available, but does not dominate the main story.
   const archiveButton=document.getElementById('archiveToggle');
@@ -2032,10 +2292,8 @@
   dockTargets.forEach(target=>dockIo.observe(target));
   setTimeout(()=>document.querySelectorAll('.rv:not(.in)').forEach(el=>el.classList.add('in')),1000);
 
-  // Route animation + current section label
+  // The journey rail follows reading progress without decorative looping motion.
   const routeProgress=document.getElementById('routeProgress'), marker=document.getElementById('trainMarker');
-  const scrollPlace=document.getElementById('scrollPlace');
-  const placeMap={passport:'旅券',dash:'出発準備室',task:'出発前タスク',journeyChapters:'四日間の章扉',plan:'四日間の物語',archiveGate:'旅の資料室',gantt:'四日間の全体図',route:'列車ルート',map:'三都市の地理',teiban:'名所案内',meshi:'食と酒',tools:'旅先のポケット',stamps:'白鷺旅の記録'};
   function onScroll(){
     const max=document.documentElement.scrollHeight-innerHeight;
     const p=max?Math.min(1,Math.max(0,scrollY/max)):0;
@@ -2043,9 +2301,6 @@
     const rail=document.querySelector('.route-rail');
     const left=28+p*(rail.clientWidth-56);
     marker.style.left=`${left}px`;
-    let current='旅の概要';
-    sections.forEach(s=>{if(s.getBoundingClientRect().top<innerHeight*.48) current=placeMap[s.id]||current;});
-    scrollPlace.textContent=current;
     // Move visual map markers if present
     document.querySelectorAll('.mapsvg').forEach((svg,i)=>{
       svg.style.setProperty('--scroll-shift',`${Math.sin((p+i)*Math.PI)*5}px`);
@@ -2103,6 +2358,95 @@
     const q=Math.sin(da/2)**2+Math.cos(toR(a))*Math.cos(toR(c))*Math.sin(db/2)**2;
     return 2*R*Math.asin(Math.sqrt(q));
   };
+
+  // Field map: the places that matter, with live distance and one-tap routing.
+  const fieldMapData={
+    dogo:{
+      eyebrow:'DAY 1–2 / DOGŌ & MATSUYAMA',
+      title:'湯と城を、無理なく結ぶ。',
+      summary:'道後は徒歩圏、松山城へは乗り物を使う。暑い時間帯は屋内か宿へ戻ります。',
+      route:[['道後温泉駅','旅の起点'],['道後温泉本館','徒歩5分'],['松山城','乗り物利用'],['大和屋本店','休憩拠点']],
+      places:[
+        {glyph:'湯',name:'道後温泉本館',query:'道後温泉本館',lat:33.8520,lon:132.7864,note:'朝一番と夜景の核。混雑時は入浴時間を短く。',meta:['徒歩5分','早朝'],must:'05:30 本館前'},
+        {glyph:'城',name:'松山城',query:'松山城',lat:33.8456,lon:132.7657,note:'暑さと脚を守るため、往復はリフトかロープウェイ。',meta:['乗り物利用','朝のうち'],must:'08:30 入場'},
+        {glyph:'宿',name:'大和屋本店',query:'大和屋本店 道後温泉',lat:33.8524,lon:132.7855,note:'荷物・食事・休憩の拠点。予定を削る時はまずここへ。',meta:['宿泊','休憩拠点']},
+        {glyph:'湯',name:'飛鳥乃湯泉',query:'飛鳥乃湯泉',lat:33.8517,lon:132.7869,note:'三湯めぐりの締め。混雑と疲れで短縮してよい場所。',meta:['三湯目','徒歩圏']}
+      ]
+    },
+    takamatsu:{
+      eyebrow:'DAY 3 / TAKAMATSU',
+      title:'庭を守り、列車へ戻る。',
+      summary:'栗林公園と18:10発を旅の軸に。二杯目のうどんは時間が残った時だけにします。',
+      route:[['高松駅','荷物を預ける'],['めりけんや','一杯目'],['栗林公園','旅の核'],['高松駅','18:10 発']],
+      places:[
+        {glyph:'庭',name:'栗林公園',query:'特別名勝 栗林公園',lat:34.3293,lon:134.0443,note:'東門から入り、掬月亭と南湖を優先。ここは削らない。',meta:['東門','庭園'],must:'14:05 掬月亭'},
+        {glyph:'食',name:'めりけんや 高松駅前店',query:'めりけんや 高松駅前店',lat:34.3501,lon:134.0472,note:'駅から近い一杯目。食後は迷わず栗林公園へ。',meta:['駅近','一杯目']},
+        {glyph:'食',name:'うどん棒 高松本店',query:'うどん棒 高松本店',lat:34.3405,lon:134.0492,note:'17:00に入れた場合だけ。列車を守るため深追いしない。',meta:['条件付き','二杯目'],must:'17:30 退店'},
+        {glyph:'駅',name:'JR高松駅',query:'JR高松駅',lat:34.3506,lon:134.0466,note:'マリンライナーの出発点。17:45には駅へ戻る。',meta:['乗車','瀬戸大橋'],must:'18:10 発'}
+      ]
+    },
+    himeji:{
+      eyebrow:'DAY 4 / HIMEJI',
+      title:'駅を軸に、城へ一直線。',
+      summary:'荷物は駅に置き、姫路城を最優先。好古園は滞在時間で調整します。',
+      route:[['ホテル南口','朝の起点'],['姫路駅','荷物を預ける'],['姫路城','旅の結び'],['姫路駅','14:40 ホーム']],
+      places:[
+        {glyph:'城',name:'姫路城',query:'姫路城',lat:34.8394,lon:134.6939,note:'大天守を最優先。脚に不安があれば西の丸を短縮。',meta:['世界遺産','階段あり'],must:'10:00 入城'},
+        {glyph:'駅',name:'JR姫路駅',query:'JR姫路駅',lat:34.8277,lon:134.6904,note:'荷物・昼食・土産・帰路の拠点。最後は余裕を持つ。',meta:['ロッカー','えきそば'],must:'14:40 ホーム'},
+        {glyph:'庭',name:'好古園',query:'姫路城西御屋敷跡庭園 好古園',lat:34.8395,lon:134.6905,note:'城が予定通り終わった場合だけ。平坦な庭で脚を休める。',meta:['条件付き','庭園']},
+        {glyph:'食',name:'じごろ小廣',query:'じごろ小廣 姫路',lat:34.8290,lon:134.6898,note:'姫路おでんと播州酒。前夜は飲み過ぎず翌朝へ。',meta:['前夜','姫路おでん']}
+      ]
+    }
+  };
+  const fieldMap=document.getElementById('fieldMap');
+  const fieldRoute=document.getElementById('fieldRoute');
+  const fieldPlaces=document.getElementById('fieldPlaces');
+  const fieldStatus=document.getElementById('fieldMapStatus');
+  let activeMapCity='dogo', lastFieldPosition=null;
+  const distanceLabel=km=>km<1?`${Math.round(km*1000)}m`:`${km.toFixed(1)}km`;
+  function applyFieldDistances(){
+    if(!lastFieldPosition) return;
+    fieldPlaces.querySelectorAll('.field-place').forEach(place=>{
+      const km=hav(lastFieldPosition.lat,lastFieldPosition.lon,Number(place.dataset.lat),Number(place.dataset.lon));
+      const badge=place.querySelector('.place-distance');
+      badge.hidden=false;
+      badge.textContent=`現在地から ${distanceLabel(km)}（直線）`;
+    });
+  }
+  function renderFieldMap(cityId){
+    activeMapCity=cityId;
+    const data=fieldMapData[cityId];
+    fieldMap.dataset.city=cityId;
+    document.getElementById('fieldMapEyebrow').textContent=data.eyebrow;
+    document.getElementById('fieldMapTitle').textContent=data.title;
+    document.getElementById('fieldMapSummary').textContent=data.summary;
+    document.querySelectorAll('[data-map-city]').forEach(button=>button.setAttribute('aria-selected',String(button.dataset.mapCity===cityId)));
+    fieldRoute.innerHTML=data.route.map((stop,index)=>`<div class="field-route-stop"><i>${index+1}</i><b>${stop[0]}</b><small>${stop[1]}</small></div>`).join('');
+    fieldPlaces.innerHTML=data.places.map(place=>{
+      const query=encodeURIComponent(place.query);
+      const meta=place.meta.map(item=>`<span>${item}</span>`).join('');
+      const must=place.must?`<span class="must">${place.must}</span>`:'';
+      return `<article class="field-place" data-lat="${place.lat}" data-lon="${place.lon}">
+        <span class="place-symbol" aria-hidden="true">${place.glyph}</span>
+        <div class="place-copy"><h4>${place.name}</h4><p>${place.note}</p><div class="place-meta">${meta}${must}<span class="place-distance" hidden></span></div></div>
+        <div class="place-actions"><a class="primary" href="https://www.google.com/maps/dir/?api=1&destination=${query}&travelmode=walking" target="_blank" rel="noopener"><span class="ui-symbol" aria-hidden="true">導</span>徒歩ルート</a><a href="https://www.google.com/maps/search/?api=1&query=${query}" target="_blank" rel="noopener"><span class="ui-symbol" aria-hidden="true">図</span>地図で見る</a></div>
+      </article>`;
+    }).join('');
+    applyFieldDistances();
+  }
+  function locateFieldMap(){
+    if(!navigator.geolocation){fieldStatus.textContent='このブラウザは位置情報に対応していません。';return;}
+    fieldStatus.textContent='現在地を測定中…';
+    navigator.geolocation.getCurrentPosition(pos=>{
+      lastFieldPosition={lat:pos.coords.latitude,lon:pos.coords.longitude};
+      applyFieldDistances();
+      fieldStatus.textContent='各場所までの直線距離を表示しました。徒歩ルートはGoogle マップで確認できます。';
+    },()=>fieldStatus.textContent='位置情報を取得できませんでした。ブラウザの許可設定を確認してください。',{enableHighAccuracy:true,timeout:10000,maximumAge:60000});
+  }
+  document.querySelectorAll('[data-map-city]').forEach(button=>button.addEventListener('click',()=>renderFieldMap(button.dataset.mapCity)));
+  document.getElementById('fieldMapLocate').addEventListener('click',locateFieldMap);
+  renderFieldMap(activeMapCity);
+
   function locate(){
     const out=document.getElementById('gpsResult');
     if(!navigator.geolocation){out.textContent='このブラウザは位置情報に対応していません。';return;}
@@ -2114,7 +2458,10 @@
     },()=>out.textContent='位置情報を取得できませんでした。ブラウザの許可設定を確認してください。',{enableHighAccuracy:true,timeout:10000});
   }
   document.getElementById('gpsBtn').addEventListener('click',locate);
-  document.getElementById('locateBtn').addEventListener('click',()=>{document.getElementById('tools').scrollIntoView();setTimeout(locate,450)});
+  document.getElementById('locateBtn').addEventListener('click',()=>{
+    document.getElementById('map').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+    setTimeout(locateFieldMap,450);
+  });
 
   // Checklist
   const defaults=['財布・現金（うどん店用）','スマホ・充電器','モバイルバッテリー','乗車券・予約確認','帽子・日傘・冷却用品','厚めの靴下（姫路城）','飲料・塩分補給','常備薬・サプリ','折りたたみ傘','父との写真を各地で1枚'];
@@ -2226,7 +2573,7 @@
 
   // GitHub Pages: keep the core passport available even when the train loses signal.
   if('serviceWorker' in navigator&&location.protocol.startsWith('http')){
-    addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+    addEventListener('load',()=>navigator.serviceWorker.register('./sw-v14.js').catch(()=>{}));
   }
 
 })();

@@ -1,11 +1,11 @@
-const CACHE_NAME = 'shirasagi-passport-v13';
+const CACHE_NAME = 'shirasagi-passport-v14';
 const CORE_ASSETS = [
   './',
   './index.html',
-  './hero-v13.jpg',
-  './manifest.webmanifest',
-  './icon-192.png',
-  './icon-512.png'
+  './hero-v14.jpg',
+  './manifest-v14.webmanifest',
+  './icon-192-v14.png',
+  './icon-512-v14.png'
 ];
 
 self.addEventListener('install', event => {
