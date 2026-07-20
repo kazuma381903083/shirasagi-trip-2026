@@ -1,0 +1,23 @@
+{
+  "name": "白鷺旅｜父子二人旅デジタルパスポート",
+  "short_name": "白鷺旅",
+  "description": "道後温泉・高松・姫路をめぐる父子二人旅のデジタル旅券",
+  "lang": "ja",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#FAF6ED",
+  "theme_color": "#17304A",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
